@@ -7,7 +7,7 @@ identity_token "aws" {
 
 deployment "development" {
   inputs = {
-    regions        = ["us-east-1"]
+    regions        = ["ap-southeast-1"]
     role_arn       = "<YOUR_ROLE_ARN>"
     identity_token = identity_token.aws.jwt
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
@@ -16,7 +16,7 @@ deployment "development" {
 
 deployment "production" {
   inputs = {
-    regions        = ["us-east-1", "us-west-1"]
+    regions        = ["ap-southeast-1", "ap-southeast-2"]
     role_arn       = "<YOUR_ROLE_ARN>"
     identity_token = identity_token.aws.jwt
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
