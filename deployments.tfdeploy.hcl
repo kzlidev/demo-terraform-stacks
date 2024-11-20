@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 identity_token "aws" {
-  audience = ["terraform-stacks-private-preview"]
+  audience = ["aws.workload.identity"]
 }
 
 deployment "development" {
