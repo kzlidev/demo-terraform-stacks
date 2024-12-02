@@ -58,7 +58,7 @@ component "parameter-store" {
 
   inputs = {
     key_value_pairs = [
-      { "s3_bucket_arn" : component.s3.bucket_arn }
+      { "s3_bucket_arn_${each.value}" : component.s3[each.value].bucket_arn }
     ]
   }
 
