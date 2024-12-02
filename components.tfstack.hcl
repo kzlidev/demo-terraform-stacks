@@ -50,3 +50,19 @@ component "api_gateway" {
     random = provider.random.this
   }
 }
+
+component "parameter-store" {
+  for_each = var.regions
+
+  source = "./aws-parameter-store"
+
+  inputs = {
+    key_value_pairs = [
+      { "s3_bucket_arn" : component.s3.bucket_arn }
+    ]
+  }
+
+  providers = {
+    aws    = provider.aws.configurations[each.value]
+  }
+}

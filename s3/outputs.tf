@@ -6,3 +6,9 @@ output "bucket_id" {
 
   value = aws_s3_bucket.lambda_bucket.id
 }
+
+output "bucket_arn" {
+  description = "The ARN of the S3 bucket to be used by a downstream component in this stack."
+
+  value = aws_s3_bucket.lambda_bucket.arn
+}
