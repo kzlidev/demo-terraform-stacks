@@ -57,9 +57,7 @@ component "parameter-store" {
   source = "./aws-parameter-store"
 
   inputs = {
-    key_value_pairs = [
-      { "s3_bucket_arn_${each.value}" : component.s3[each.value].bucket_arn }
-    ]
+    key_value_pairs = { "s3_bucket_arn_${each.value}" : component.s3[each.value].bucket_arn }
   }
 
   providers = {
