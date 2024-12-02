@@ -63,31 +63,31 @@ component "parameter-store" {
   }
 
   providers = {
-    aws    = provider.aws.configurations[each.value]
+    aws = provider.aws.configurations[each.value]
   }
 }
 
 component "cluster" {
   for_each = var.regions
-  source = "./cluster"
+  source   = "./cluster"
 
   providers = {
-    aws = provider.aws.main
-    random = provider.random.main
+    aws    = provider.aws.configurations[each.value]
+    random = provider.random.this
   }
 
   inputs = {
     cluster_name       = var.cluster_name
     kubernetes_version = var.kubernetes_version
-    region = each.value
+    region             = each.value
   }
 }
 
 component "kube" {
   for_each = var.regions
-  source = "./kube"
+  source   = "./kube"
 
   providers = {
-    kubernetes = provider.kubernetes.main
+    kubernetes = provider.aws.configurations[each.value]
   }
 }
