@@ -18,8 +18,13 @@ required_providers {
   }
 
   local = {
-    source = "hashicorp/local"
+    source  = "hashicorp/local"
     version = "~> 2.4.0"
+  }
+
+  kubernetes = {
+    source  = "hashicorp/kubernetes"
+    version = "~> 2.32.0"
   }
 }
 
@@ -37,6 +42,14 @@ provider "aws" "configurations" {
     default_tags {
       tags = var.default_tags
     }
+  }
+}
+
+provider "kubernetes" "main" {
+  config {
+    host                   = component.cluster.cluster_url
+    cluster_ca_certificate = component.cluster.cluster_ca
+    token                  = component.cluster.cluster_token
   }
 }
 

@@ -11,6 +11,8 @@ deployment "development" {
     role_arn       = "arn:aws:iam::058264549112:role/likz-stacks-demo-role"
     identity_token = identity_token.aws.jwt
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
+    cluster_name        = "stacks-demo"
+    kubernetes_version  = "1.30"
   }
 }
 
@@ -20,5 +22,7 @@ deployment "production" {
     role_arn       = "arn:aws:iam::058264549112:role/likz-stacks-demo-role"
     identity_token = identity_token.aws.jwt
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
+    cluster_name        = "stacks-demo"
+    kubernetes_version  = "1.30"
   }
 }
