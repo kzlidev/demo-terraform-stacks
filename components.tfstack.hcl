@@ -88,6 +88,6 @@ component "kube" {
   source   = "./kube"
 
   providers = {
-    kubernetes = provider.aws.configurations[each.value]
+    kubernetes = provider.kubernetes.main[each.value]
   }
 }

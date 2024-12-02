@@ -46,10 +46,12 @@ provider "aws" "configurations" {
 }
 
 provider "kubernetes" "main" {
+  for_each = var.regions
+
   config {
-    host                   = component.cluster.cluster_url
-    cluster_ca_certificate = component.cluster.cluster_ca
-    token                  = component.cluster.cluster_token
+    host                   = component.cluster[each.value].cluster_url
+    cluster_ca_certificate = component.cluster[each.value].cluster_ca
+    token                  = component.cluster[each.value].cluster_token
   }
 }
 
