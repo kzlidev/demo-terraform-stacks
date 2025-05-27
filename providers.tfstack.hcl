@@ -45,6 +45,8 @@ provider "aws" "configurations" {
   }
 }
 
+# This provider is dependent on the output of a previous Terraform Run.
+# Stack can orchestrate the rendering of this provider through multiple Terraform Runs (Deferred changes)
 provider "kubernetes" "main" {
   for_each = var.regions
 
